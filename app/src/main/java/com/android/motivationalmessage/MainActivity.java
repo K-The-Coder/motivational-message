@@ -28,28 +28,35 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view)
             {
                 String name = etName.getText().toString();
-                String[] arrayString = {
-                        "Hi " +name+ ", you are amazing!",
-                        "Hi " +name+ ", just remember, nobody owes you anything.",
-                        "Hi " +name+ ", just hang in there, you got this.",
-                        "Hi " +name+ ", remember, giving up is never the option.",
-                        "Hi " +name+ ", remember why you started in the first place.",
-                        "Hi " +name+ ", you are better than you think."
-                };
 
-                Random random = new Random();
+                if (!name.isEmpty()) {
+                    String[] arrayString = {
+                            "Hi " + name + ", you are amazing!",
+                            "Hi " + name + ", just remember, nobody owes you anything.",
+                            "Hi " + name + ", just hang in there, you got this.",
+                            "Hi " + name + ", remember, giving up is never the option.",
+                            "Hi " + name + ", remember why you started in the first place.",
+                            "Hi " + name + ", you are better than you think."
+                    };
 
-                int randomString = random.nextInt(arrayString.length);
+                    Random random = new Random();
 
-                AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
-                dialog.setMessage(arrayString[randomString]);
-                dialog.setNegativeButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        //No action needed here
-                    }
-                });
-                dialog.show();
+                    int randomString = random.nextInt(arrayString.length);
+
+                    AlertDialog.Builder dialog = new AlertDialog.Builder(MainActivity.this);
+                    dialog.setMessage(arrayString[randomString]);
+                    dialog.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            //No action needed here
+                        }
+                    });
+                    dialog.show();
+                    etName.setText("");
+                }
+                else{
+                    Toast.makeText(MainActivity.this, "Please enter your name", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
